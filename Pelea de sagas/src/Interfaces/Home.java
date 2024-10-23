@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import Clases.AI;
 import Clases.Saga;
 import Clases.Character;
 import Clases.Global;
@@ -13,9 +14,14 @@ import Clases.Global;
  * @author alons
  */
 public class Home extends javax.swing.JFrame {
+    
+    public static int id;
     Global g = new Global();
+    AI ai = new AI();
     private Saga starWars = new Saga("star wars");
     private Saga starTrek = new Saga("star trek");
+    
+    
 
     /**
      * Creates new form Home
@@ -69,15 +75,16 @@ public class Home extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Character character;
-        int id = 0;
+        ai.setSaga1(starWars);
+        ai.setSaga2(starTrek);
+        starWars.setCharacter_list(g.star_wars_characters_names);
+        starTrek.setCharacter_list(g.star_trek_characters_names);
+       
         for (int i = 0; i<20; i++){
-            character = new Character(id, g.star_wars_characters_names[i]);
-            starWars.addCharacter(character);
-            id++;
             
-            character = new Character(id, g.star_trek_characters_names[i]);
-            starTrek.addCharacter(character);
-            id++;      
+            starWars.addCharacter(i);
+            starTrek.addCharacter(i);
+               
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
