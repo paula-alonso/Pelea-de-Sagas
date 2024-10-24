@@ -7,27 +7,26 @@ package Clases;
 /**
  *
  * @author marie
- * 
+ *
  */
-
 import EDD.Nodo;
-import Clases .Global;
+import Clases.Global;
 import Clases.Saga;
 import Interfaces.Home;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
 public class Admin extends Thread {
-    
-    private AI ai; 
+
+    private AI ai;
     private Saga saga1;
     private Saga saga2;
-    
+
     public Admin(AI ai) {
         this.ai = ai;
+        this.saga1 = ai.getSaga1();
+        this.saga2 = ai.getSaga2();
     }
 
     /**
@@ -48,7 +47,6 @@ public class Admin extends Thread {
         this.saga2 = saga2;
     }
 
-
     /**
      * Get the value of saga1
      *
@@ -68,22 +66,25 @@ public class Admin extends Thread {
     }
 
     @Override
-    public void run(){
-        
-        if (ai.ready()) {
-            double chances = Math.random();
-            if (chances <= 0.8) {
-                
-                int random = (int) (Math.random() * 20);
-                saga1.addCharacter(random);
-                random = (int) (Math.random() * 20);
-                saga2.addCharacter(random);
-               
-            
+    public void run() {
+
+        while (true) {
+
+            if (ai.ready()) {
+                double chances = Math.random();
+                if (chances <= 0.8) {
+
+                    int random = (int) (Math.random() * 20);
+                    saga1.addCharacter(random);
+                    random = (int) (Math.random() * 20);
+                    saga2.addCharacter(random);
+
+                }
             }
+            
+            ai.run();
         }
     }
-        
 
     /**
      * Get the value of ai
@@ -103,5 +104,4 @@ public class Admin extends Thread {
         this.ai = ai;
     }
 
-    
 }

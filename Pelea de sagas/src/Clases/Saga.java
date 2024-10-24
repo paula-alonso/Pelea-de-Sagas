@@ -27,6 +27,30 @@ public class Saga {
         this.lowPriorityQueue = new Cola();
     }
 
+    public Cola<Character> getHightPriorityQueue() {
+        return hightPriorityQueue;
+    }
+
+    public void setHightPriorityQueue(Cola<Character> hightPriorityQueue) {
+        this.hightPriorityQueue = hightPriorityQueue;
+    }
+
+    public Cola<Character> getMediumPriorityQueue() {
+        return mediumPriorityQueue;
+    }
+
+    public void setMediumPriorityQueue(Cola<Character> mediumPriorityQueue) {
+        this.mediumPriorityQueue = mediumPriorityQueue;
+    }
+
+    public Cola<Character> getLowPriorityQueue() {
+        return lowPriorityQueue;
+    }
+
+    public void setLowPriorityQueue(Cola<Character> lowPriorityQueue) {
+        this.lowPriorityQueue = lowPriorityQueue;
+    }
+
     /**
      * Get the value of character_list
      *
@@ -66,7 +90,7 @@ public class Saga {
         }
         Home.id++;
         
-        System.out.println("ID: "+ character.getId() +" Nombre: "+character.getName()+" Prioridad: "+character.getPriority()+" Añadido");
+        System.out.println(" ID: "+ character.getId() +" Nombre: "+character.getName()+" Prioridad: "+character.getPriority()+" Añadido");
         
     }
     

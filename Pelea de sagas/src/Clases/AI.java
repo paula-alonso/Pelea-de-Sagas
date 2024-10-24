@@ -7,29 +7,135 @@ package Clases;
 /**
  *
  * @author marie
- * 
- * 
+ *
+ *
  */
 import Clases.Character;
 import Clases.Saga;
 import Interfaces.Home;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-
-public class AI {
+public class AI extends Thread {
 
     private String status;
     private int counter;
     private boolean ready;
     private Saga saga1;
     private Saga saga2;
-
+    private Character pickedCharacter1;
+    private Character pickedCharacter2;
+    private int waitingTime;
     
-    public AI() {
+    public AI(Saga saga1, Saga saga2) {
         this.counter = 0;
         this.ready = false;
-        
+        waitingTime = 2000;
+        this.saga1 = saga1;
+        this.saga2 = saga2;
+
     }
+
+    /**
+     * Get the value of waitingTime
+     *
+     * @return the value of waitingTime
+     */
+    public int getWaitingTime() {
+        return waitingTime;
+    }
+
+    /**
+     * Set the value of waitingTime
+     *
+     * @param waitingTime new value of waitingTime
+     */
+    public void setWaitingTime(int waitingTime) {
+        this.waitingTime = waitingTime;
+    }
+
     
+
+    /**
+     * Get the value of pickedCharacter2
+     *
+     * @return the value of pickedCharacter2
+     */
+    public Character getPickedCharacter2() {
+        return pickedCharacter2;
+    }
+
+    /**
+     * Set the value of pickedCharacter2
+     *
+     * @param pickedCharacter2 new value of pickedCharacter2
+     */
+    public void setPickedCharacter2(Character pickedCharacter2) {
+        this.pickedCharacter2 = pickedCharacter2;
+    }
+
+    /**
+     * Get the value of pickedCharacter1
+     *
+     * @return the value of pickedCharacter1
+     */
+    public Character getPickedCharacter1() {
+        return pickedCharacter1;
+    }
+
+    /**
+     * Set the value of pickedCharacter1
+     *
+     * @param pickedCharacter1 new value of pickedCharacter1
+     */
+    public void setPickedCharacter1(Character pickedCharacter1) {
+        this.pickedCharacter1 = pickedCharacter1;
+    }
+
+    @Override
+    public void run() {
+
+        //while (true) {
+
+            try {
+                counter++;
+                pickCharacter(saga1, pickedCharacter1);
+                pickCharacter(saga2, pickedCharacter2);
+                sleep(waitingTime);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        //}
+
+    }
+
+    boolean ready() {
+        if (counter == 2) {
+            ready = true;
+            counter = 0;
+        } else {
+            ready = false;
+        }
+        return ready;
+    }
+
+    public void pickCharacter(Saga saga, Character picked) {
+
+        if (!saga.getHightPriorityQueue().isEmpty()) {
+            picked = (Character) saga.getHightPriorityQueue().getFirst().getData();
+            saga.getHightPriorityQueue().Desencolar();
+        } else if (!saga.getMediumPriorityQueue().isEmpty()) {
+            picked = (Character) saga.getMediumPriorityQueue().getFirst().getData();
+            saga.getMediumPriorityQueue().Desencolar();
+        } else {
+            picked = (Character) saga.getLowPriorityQueue().getFirst().getData();
+            saga.getLowPriorityQueue().Desencolar();
+        }
+        
+        System.out.print("\nSe ha escogido a: " + picked.getName());
+
+    }
+
     /**
      * Get the value of saga2
      *
@@ -47,8 +153,6 @@ public class AI {
     public void setSaga2(Saga saga2) {
         this.saga2 = saga2;
     }
-
-    
 
     /**
      * Get the value of saga1
@@ -68,9 +172,6 @@ public class AI {
         this.saga1 = saga1;
     }
 
-    
-    
-
     /**
      * Get the value of ready
      *
@@ -88,8 +189,6 @@ public class AI {
     public void setReady(boolean ready) {
         this.ready = ready;
     }
-
-    
 
     /**
      * Get the value of counter
@@ -114,8 +213,6 @@ public class AI {
      *
      * @return the value of status
      */
-    
-    
     public String getStatus() {
         return status;
     }
@@ -132,20 +229,4 @@ public class AI {
     /**
      *
      */
-    
-   public void run(){
-       counter ++;
-       
-    }
-    boolean ready () {
-        if (counter == 2) {
-            ready = true;
-            counter = 0;
-        } else {
-            ready = false;
-        }
-        return ready;
-    }
-
-    
 }
