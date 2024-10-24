@@ -52,6 +52,8 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        character1 = new javax.swing.JLabel();
+        character2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -63,9 +65,7 @@ public class Home extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         ColaR_s22 = new javax.swing.JScrollPane();
@@ -100,6 +100,18 @@ public class Home extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 670, 200, 60));
+
+        character1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        character1.setForeground(new java.awt.Color(255, 255, 255));
+        character1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        character1.setText("Id: Nombre");
+        jPanel1.add(character1, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 520, 240, -1));
+
+        character2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        character2.setForeground(new java.awt.Color(255, 255, 255));
+        character2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        character2.setText("Id: Nombre");
+        jPanel1.add(character2, new org.netbeans.lib.awtextra.AbsoluteConstraints(577, 520, 250, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards - Copy.png"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -154,20 +166,10 @@ public class Home extends javax.swing.JFrame {
         jLabel4.setText("VS");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Id: Nombre");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 520, -1, -1));
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Lista de ganadores:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Id: Nombre");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 520, -1, -1));
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -250,8 +252,11 @@ public class Home extends javax.swing.JFrame {
         JTextArea[] labels1 = new JTextArea[]{ColaH_s1, ColaM_s1, ColaL_s1, ColaR_s1};
         JTextArea[] labels2 = new JTextArea[]{ColaH_s2, ColaM_s2, ColaL_s2, ColaR_s2};
         
-        starWars.setLabels(labels1);
-        starTrek.setLabels(labels2);
+        starWars.setTextAreas(labels1);
+        starTrek.setTextAreas(labels2);
+        
+        starWars.setTitle_lable(character1);
+        starTrek.setTitle_lable(character2);
         
         for (int i = 0; i<20; i++){
             
@@ -317,6 +322,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea ColaR_s2;
     private javax.swing.JScrollPane ColaR_s22;
     private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel character1;
+    private javax.swing.JLabel character2;
     private javax.swing.JButton jButton1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel10;
@@ -328,9 +335,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

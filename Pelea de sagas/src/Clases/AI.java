@@ -124,15 +124,18 @@ public class AI extends Thread {
         if (!saga.getHightPriorityQueue().isEmpty()) {
             picked = (Character) saga.getHightPriorityQueue().getFirst().getData();
             saga.getHightPriorityQueue().Desencolar();
-            saga.getLabels()[0].setText(saga.getHightPriorityQueue().imprimir());
+            saga.getTextAreas()[0].setText(saga.getHightPriorityQueue().imprimir());
+            saga.getTitle_lable().setText(picked.getName());
         } else if (!saga.getMediumPriorityQueue().isEmpty()) {
             picked = (Character) saga.getMediumPriorityQueue().getFirst().getData();
             saga.getMediumPriorityQueue().Desencolar();
-            saga.getLabels()[1].setText(saga.getMediumPriorityQueue().imprimir());
+            saga.getTextAreas()[1].setText(saga.getMediumPriorityQueue().imprimir());
+            saga.getTitle_lable().setText(picked.getName());
         } else {
             picked = (Character) saga.getLowPriorityQueue().getFirst().getData();
             saga.getLowPriorityQueue().Desencolar();
-            saga.getLabels()[2].setText(saga.getLowPriorityQueue().imprimir());
+            saga.getTextAreas()[2].setText(saga.getLowPriorityQueue().imprimir());
+            saga.getTitle_lable().setText(picked.getName());
         }
         
         System.out.print("\nSe ha escogido a: " + picked.getName());

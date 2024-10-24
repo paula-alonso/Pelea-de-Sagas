@@ -7,6 +7,7 @@ package Clases;
 import EDD.Cola;
 import Interfaces.Home;
 import static Interfaces.Home.id;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /**
@@ -19,34 +20,56 @@ public class Saga {
     private Cola<Character> mediumPriorityQueue;
     private Cola<Character> lowPriorityQueue;
     private String[] character_list;
-    private JTextArea[] labels;
-
-    /**
-     * Get the value of labels
-     *
-     * @return the value of labels
-     */
-    public JTextArea[] getLabels() {
-        return labels;
-    }
-
-    /**
-     * Set the value of labels
-     *
-     * @param labels new value of labels
-     */
-    public void setLabels(JTextArea[] labels) {
-        this.labels = labels;
-    }
-
+    private JTextArea[] textAreas;
+    private JLabel title_lable;
     
-    
-    public Saga(String name) {
+     public Saga(String name) {
         this.name = name;
         this.hightPriorityQueue = new Cola();
         this.mediumPriorityQueue = new Cola();
         this.lowPriorityQueue = new Cola();
     }
+
+    /**
+     * Get the value of title_lable
+     *
+     * @return the value of title_lable
+     */
+    public JLabel getTitle_lable() {
+        return title_lable;
+    }
+
+    /**
+     * Set the value of title_lable
+     *
+     * @param title_lable new value of title_lable
+     */
+    public void setTitle_lable(JLabel title_lable) {
+        this.title_lable = title_lable;
+    }
+
+
+    /**
+     * Get the value of textAreas
+     *
+     * @return the value of textAreas
+     */
+    public JTextArea[] getTextAreas() {
+        return textAreas;
+    }
+
+    /**
+     * Set the value of textAreas
+     *
+     * @param textAreas new value of textAreas
+     */
+    public void setTextAreas(JTextArea[] textAreas) {
+        this.textAreas = textAreas;
+    }
+
+    
+    
+   
 
     public Cola<Character> getHightPriorityQueue() {
         return hightPriorityQueue;
@@ -104,14 +127,14 @@ public class Saga {
         
         if(character.getPriority() == 1){
             hightPriorityQueue.Encolar(character);
-            this.labels[0].setText(hightPriorityQueue.imprimir());
+            this.textAreas[0].setText(hightPriorityQueue.imprimir());
             
         } else if (character.getPriority() == 2) {
             mediumPriorityQueue.Encolar(character);
-            this.labels[1].setText(mediumPriorityQueue.imprimir());
+            this.textAreas[1].setText(mediumPriorityQueue.imprimir());
         }else {
             lowPriorityQueue.Encolar(character);
-            this.labels[2].setText(lowPriorityQueue.imprimir());
+            this.textAreas[2].setText(lowPriorityQueue.imprimir());
         }
         Home.id++;
         
