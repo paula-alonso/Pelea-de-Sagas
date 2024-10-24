@@ -7,6 +7,7 @@ package Clases;
 import EDD.Cola;
 import Interfaces.Home;
 import static Interfaces.Home.id;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -18,6 +19,26 @@ public class Saga {
     private Cola<Character> mediumPriorityQueue;
     private Cola<Character> lowPriorityQueue;
     private String[] character_list;
+    private JTextArea[] labels;
+
+    /**
+     * Get the value of labels
+     *
+     * @return the value of labels
+     */
+    public JTextArea[] getLabels() {
+        return labels;
+    }
+
+    /**
+     * Set the value of labels
+     *
+     * @param labels new value of labels
+     */
+    public void setLabels(JTextArea[] labels) {
+        this.labels = labels;
+    }
+
     
     
     public Saga(String name) {
@@ -83,10 +104,14 @@ public class Saga {
         
         if(character.getPriority() == 1){
             hightPriorityQueue.Encolar(character);
+            this.labels[0].setText(hightPriorityQueue.imprimir());
+            
         } else if (character.getPriority() == 2) {
             mediumPriorityQueue.Encolar(character);
+            this.labels[1].setText(mediumPriorityQueue.imprimir());
         }else {
             lowPriorityQueue.Encolar(character);
+            this.labels[2].setText(lowPriorityQueue.imprimir());
         }
         Home.id++;
         

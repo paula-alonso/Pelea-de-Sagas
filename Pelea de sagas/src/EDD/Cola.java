@@ -8,6 +8,10 @@ package EDD;
  *
  * @author alons
  */
+
+import Clases.Character;
+
+
 public class Cola<T> {
     private Nodo First;
     private Nodo Last;
@@ -83,4 +87,15 @@ public class Cola<T> {
         
       }
     }    
+
+    public String imprimir() {
+        String contenido="";
+        for (Nodo<Character> aux=getFirst(); aux!=null; aux=aux.getpNext()) {
+            Character character = aux.getData();
+            contenido+= "(ID:" + character.getId()+") ";
+            contenido+= character.getName()+"\n";
+            //System.out.println(aux.getElement().getId()+" "+aux.getElement().getName() +" "+aux.getElement().getObject());
+        }
+        return contenido;
+    }
 }
