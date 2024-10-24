@@ -18,6 +18,7 @@ public class Character {
     private boolean strength;
     private boolean agility;
     private int priority;
+    private int counter;
 
     public Character(int id, String name) {
         this.id = id;
@@ -27,7 +28,29 @@ public class Character {
         this.strength = determineQuality(0.5);
         this.agility = determineQuality(0.4);
         this.priority = determinePriority();
+        this.counter = 0;
+        
     }
+   
+
+    /**
+     * Get the value of counter
+     *
+     * @return the value of counter
+     */
+    public int getCounter() {
+        return counter;
+    }
+
+    /**
+     * Set the value of counter
+     *
+     * @param counter new value of counter
+     */
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
     
     private boolean determineQuality(double probability){
         Random random = new Random();

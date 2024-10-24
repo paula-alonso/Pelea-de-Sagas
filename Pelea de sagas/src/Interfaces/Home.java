@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import Clases.AI;
+import Clases.Admin;
 import Clases.Saga;
 import Clases.Character;
 import Clases.Global;
@@ -13,9 +15,16 @@ import Clases.Global;
  * @author alons
  */
 public class Home extends javax.swing.JFrame {
+    
+    public static int id;
     Global g = new Global();
     private Saga starWars = new Saga("star wars");
     private Saga starTrek = new Saga("star trek");
+    AI ai = new AI(starWars, starTrek);
+    Admin admin = new Admin(ai);
+   
+    
+    
 
     /**
      * Creates new form Home
@@ -23,6 +32,8 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setLocationRelativeTo(null);
+        starWars.setCharacter_list(g.star_wars_characters_names);
+        starTrek.setCharacter_list(g.star_trek_characters_names);
     }
 
     /**
@@ -118,17 +129,17 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Character character;
-        int id = 0;
+        
+        
         for (int i = 0; i<20; i++){
-            character = new Character(id, g.star_wars_characters_names[i]);
-            starWars.addCharacter(character);
-            id++;
             
-            character = new Character(id, g.star_trek_characters_names[i]);
-            starTrek.addCharacter(character);
-            id++;      
+            starWars.addCharacter(i);
+            starTrek.addCharacter(i);
+               
         }
+        
+        
+        admin.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
