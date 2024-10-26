@@ -83,7 +83,13 @@ public class Admin extends Thread {
             }
             
             ai.run();
+            updateQueues();
         }
+    }
+    
+    public void updateQueues(){
+        saga1.updateCharactersPriorities();
+        saga2.updateCharactersPriorities();
     }
 
     /**

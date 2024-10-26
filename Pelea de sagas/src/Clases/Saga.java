@@ -5,10 +5,12 @@
 package Clases;
 
 import EDD.Cola;
+import EDD.Nodo;
 import Interfaces.Home;
 import static Interfaces.Home.id;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import Clases.Character;
 
 /**
  *
@@ -22,12 +24,52 @@ public class Saga {
     private String[] character_list;
     private JTextArea[] textAreas;
     private JLabel title_lable;
+    private Cola[] queuesArray;
     
      public Saga(String name) {
         this.name = name;
         this.hightPriorityQueue = new Cola();
         this.mediumPriorityQueue = new Cola();
         this.lowPriorityQueue = new Cola();
+        queuesArray = new Cola[3];
+        queuesArray[0] = hightPriorityQueue;
+        queuesArray[1] = mediumPriorityQueue;
+        queuesArray[2] = lowPriorityQueue;
+    }
+     
+    public void updateCharactersPriorities(){
+        updateCounters();
+        for (int i = 1; i<3; i++){
+            Nodo aux = queuesArray[i].getFirst();
+            while(aux != null) {
+                Character character = (Character) aux.getData();
+                if (character.getCounter() == 8){
+                    //Prioridad 2 --> Prioridad 1
+                    if (i == 1){ 
+                        hightPriorityQueue.Encolar(character);
+                        mediumPriorityQueue.delete(aux);
+                    } else { // Prioridad 3 ---> Prioridad 2
+                        mediumPriorityQueue.Encolar(character);
+                        lowPriorityQueue.delete(aux);
+                    }
+                }
+                aux = aux.getpNext();
+            }
+        }
+    }
+     
+    public void updateCounters(){
+        for (int i = 0; i<3; i++){
+            Nodo aux = queuesArray[i].getFirst();
+            while(aux != null) {
+                Character character = (Character) aux.getData();
+                if (character.getCounter() < 8){
+                    character.setCounter(character.getCounter() + 1);
+                    System.out.println("contado nuevo: " + character.getCounter() + " nombre " + character.getName() + " id " + character.getId());
+                }
+                aux = aux.getpNext();
+            }
+        }
     }
 
     /**
