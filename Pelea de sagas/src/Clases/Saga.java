@@ -47,11 +47,12 @@ public class Saga {
                     //Prioridad 2 --> Prioridad 1
                     if (i == 1){ 
                         hightPriorityQueue.Encolar(character);
-                        mediumPriorityQueue.delete(aux);
+                        mediumPriorityQueue.delete(aux);     
                     } else { // Prioridad 3 ---> Prioridad 2
                         mediumPriorityQueue.Encolar(character);
                         lowPriorityQueue.delete(aux);
                     }
+                    updateAllTextAreas();
                 }
                 aux = aux.getpNext();
             }
@@ -70,6 +71,33 @@ public class Saga {
                 aux = aux.getpNext();
             }
         }
+    }
+    
+    public void updateAllTextAreas(){
+        updateTextArea(0);
+        updateTextArea(1);
+        updateTextArea(2);
+    }
+    
+    public void updateTextArea(int index){
+        textAreas[index].setText(queuesArray[index].imprimir());
+    }
+    
+     /**
+     * 
+     * @param character 
+     * Add characters to the priority queues
+     */
+    public void addCharacter(int picked){
+        
+        Character character = new Character(Home.id, character_list[picked]);
+        int priorityIndex = character.getPriority() -1;
+        queuesArray[priorityIndex].Encolar(character);
+        updateTextArea(priorityIndex);
+        Home.id++;
+        
+        System.out.println(" ID: "+ character.getId() +" Nombre: "+character.getName()+" Prioridad: "+character.getPriority()+" Añadido");
+        
     }
 
     /**
@@ -153,35 +181,6 @@ public class Saga {
      */
     public void setCharacter_list(String[] character_list) {
         this.character_list = character_list;
-    }
-
-
-    
-    
-    /**
-     * 
-     * @param character 
-     * Add characters to the priority queues
-     */
-    public void addCharacter(int picked){
-        
-        Character character = new Character(Home.id, character_list[picked]);
-        
-        if(character.getPriority() == 1){
-            hightPriorityQueue.Encolar(character);
-            this.textAreas[0].setText(hightPriorityQueue.imprimir());
-            
-        } else if (character.getPriority() == 2) {
-            mediumPriorityQueue.Encolar(character);
-            this.textAreas[1].setText(mediumPriorityQueue.imprimir());
-        }else {
-            lowPriorityQueue.Encolar(character);
-            this.textAreas[2].setText(lowPriorityQueue.imprimir());
-        }
-        Home.id++;
-        
-        System.out.println(" ID: "+ character.getId() +" Nombre: "+character.getName()+" Prioridad: "+character.getPriority()+" Añadido");
-        
     }
     
     

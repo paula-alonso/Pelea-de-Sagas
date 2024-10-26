@@ -84,6 +84,8 @@ public class Home extends javax.swing.JFrame {
         ColaL_s1 = new javax.swing.JTextArea();
         ColaH_s11 = new javax.swing.JScrollPane();
         ColaH_s1 = new javax.swing.JTextArea();
+        AIstatus2 = new javax.swing.JLabel();
+        AIstatus1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,57 +101,57 @@ public class Home extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 670, 200, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 700, 200, 60));
 
         character1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         character1.setForeground(new java.awt.Color(255, 255, 255));
         character1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         character1.setText("Id: Nombre");
-        jPanel1.add(character1, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 520, 240, -1));
+        jPanel1.add(character1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 240, -1));
 
         character2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         character2.setForeground(new java.awt.Color(255, 255, 255));
         character2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         character2.setText("Id: Nombre");
-        jPanel1.add(character2, new org.netbeans.lib.awtextra.AbsoluteConstraints(577, 520, 250, -1));
+        jPanel1.add(character2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 560, 250, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards - Copy.png"))); // NOI18N
         jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 240, 340));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 240, 340));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 250, 340));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, 250, 340));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(241, 193, 0));
         jLabel12.setText("Cola 1");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 150, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(241, 193, 0));
         jLabel13.setText("Cola 2");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 260, -1, 30));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 270, -1, 30));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(241, 193, 0));
         jLabel14.setText("Cola 3");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 380, -1, 30));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, -1, 30));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(241, 193, 0));
         jLabel15.setText("Cola de refuerzo");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 510, -1, 30));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 540, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(241, 193, 0));
         jLabel11.setText("Cola de refuerzo");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(241, 193, 0));
         jLabel10.setText("Cola 3");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(241, 193, 0));
@@ -164,40 +166,40 @@ public class Home extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 70)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(241, 193, 0));
         jLabel4.setText("VS");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Lista de ganadores:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 610, -1, -1));
 
         jScrollPane1.setViewportView(jEditorPane1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, 420, 60));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 610, 420, 60));
 
         ColaR_s2.setColumns(20);
         ColaR_s2.setRows(5);
         ColaR_s22.setViewportView(ColaR_s2);
 
-        jPanel1.add(ColaR_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 540, 190, 80));
+        jPanel1.add(ColaR_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 580, 190, 80));
 
         ColaR_s1.setColumns(20);
         ColaR_s1.setRows(5);
         ColaR_s11.setViewportView(ColaR_s1);
 
-        jPanel1.add(ColaR_s11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 190, 80));
+        jPanel1.add(ColaR_s11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 190, 80));
 
         ColaH_s2.setColumns(20);
         ColaH_s2.setRows(5);
         ColaH_s22.setViewportView(ColaH_s2);
 
-        jPanel1.add(ColaH_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 170, 190, 80));
+        jPanel1.add(ColaH_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, 190, 80));
 
         ColaM_s2.setColumns(20);
         ColaM_s2.setRows(5);
         ColaM_s22.setViewportView(ColaM_s2);
 
-        jPanel1.add(ColaM_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 290, 190, 80));
+        jPanel1.add(ColaM_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 310, 190, 80));
 
         ColaM_s1.setColumns(20);
         ColaM_s1.setRows(5);
@@ -209,19 +211,25 @@ public class Home extends javax.swing.JFrame {
         ColaL_s2.setRows(5);
         ColaL_s22.setViewportView(ColaL_s2);
 
-        jPanel1.add(ColaL_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 410, 190, 80));
+        jPanel1.add(ColaL_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 440, 190, 80));
 
         ColaL_s1.setColumns(20);
         ColaL_s1.setRows(5);
         ColaL_s11.setViewportView(ColaL_s1);
 
-        jPanel1.add(ColaL_s11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 190, 80));
+        jPanel1.add(ColaL_s11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 190, 80));
 
         ColaH_s1.setColumns(20);
         ColaH_s1.setRows(5);
         ColaH_s11.setViewportView(ColaH_s1);
 
         jPanel1.add(ColaH_s11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 190, 80));
+
+        AIstatus2.setText("jLabel1");
+        jPanel1.add(AIstatus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, -1, -1));
+
+        AIstatus1.setText("jLabel1");
+        jPanel1.add(AIstatus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
 
         Fondo.setForeground(new java.awt.Color(60, 63, 65));
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/background.png"))); // NOI18N
@@ -305,7 +313,9 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea ColaH_s1;
+    private javax.swing.JLabel AIstatus1;
+    private javax.swing.JLabel AIstatus2;
+    public static javax.swing.JTextArea ColaH_s1;
     private javax.swing.JScrollPane ColaH_s11;
     private javax.swing.JTextArea ColaH_s2;
     private javax.swing.JScrollPane ColaH_s22;
