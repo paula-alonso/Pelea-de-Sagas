@@ -69,6 +69,10 @@ public class Admin extends Thread {
     public void run() {
 
         while (true) {
+           
+            
+            pickCharacter(saga1);
+            pickCharacter(saga2);
 
             if (ai.ready()) {
                 double chances = Math.random();
@@ -90,6 +94,43 @@ public class Admin extends Thread {
     public void updateQueues(){
         saga1.updateCharactersPriorities();
         saga2.updateCharactersPriorities();
+    }
+    
+    public void pickCharacter(Saga saga) {
+
+        if (!saga.getHightPriorityQueue().isEmpty()) {
+            
+            Character picked = (Character) saga.getHightPriorityQueue().getFirst().getData();
+            saga.setPickedCharacter(picked);
+            
+            saga.getHightPriorityQueue().Desencolar();
+            saga.getTextAreas()[0].setText(saga.getHightPriorityQueue().imprimir());
+            saga.getTitle_lable().setText(picked.getName());
+             System.out.print("\nSe ha escogido a: " + picked.getName());
+             
+        } else if (!saga.getMediumPriorityQueue().isEmpty()) {
+            
+            Character picked = (Character) saga.getMediumPriorityQueue().getFirst().getData();
+            saga.setPickedCharacter(picked);
+            
+            saga.getMediumPriorityQueue().Desencolar();
+            saga.getTextAreas()[1].setText(saga.getMediumPriorityQueue().imprimir());
+            saga.getTitle_lable().setText(picked.getName());
+             System.out.print("\nSe ha escogido a: " + picked.getName());
+             
+        } else {
+            
+            Character picked = (Character) saga.getLowPriorityQueue().getFirst().getData();
+            saga.setPickedCharacter(picked);
+            
+            saga.getLowPriorityQueue().Desencolar();
+            saga.getTextAreas()[2].setText(saga.getLowPriorityQueue().imprimir());
+            saga.getTitle_lable().setText(picked.getName());
+             System.out.print("\nSe ha escogido a: " + picked.getName());
+        }
+        
+       
+
     }
 
     /**

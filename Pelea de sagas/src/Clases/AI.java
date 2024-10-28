@@ -100,8 +100,7 @@ public class AI extends Thread {
             try {
                 counter++;
                 sleep(waitingTime);
-                pickCharacter(saga1, pickedCharacter1);
-                pickCharacter(saga2, pickedCharacter2);
+             
             } catch (InterruptedException ex) {
                 Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -119,28 +118,7 @@ public class AI extends Thread {
         return ready;
     }
 
-    public void pickCharacter(Saga saga, Character picked) {
-
-        if (!saga.getHightPriorityQueue().isEmpty()) {
-            picked = (Character) saga.getHightPriorityQueue().getFirst().getData();
-            saga.getHightPriorityQueue().Desencolar();
-            saga.getTextAreas()[0].setText(saga.getHightPriorityQueue().imprimir());
-            saga.getTitle_lable().setText(picked.getName());
-        } else if (!saga.getMediumPriorityQueue().isEmpty()) {
-            picked = (Character) saga.getMediumPriorityQueue().getFirst().getData();
-            saga.getMediumPriorityQueue().Desencolar();
-            saga.getTextAreas()[1].setText(saga.getMediumPriorityQueue().imprimir());
-            saga.getTitle_lable().setText(picked.getName());
-        } else {
-            picked = (Character) saga.getLowPriorityQueue().getFirst().getData();
-            saga.getLowPriorityQueue().Desencolar();
-            saga.getTextAreas()[2].setText(saga.getLowPriorityQueue().imprimir());
-            saga.getTitle_lable().setText(picked.getName());
-        }
-        
-        System.out.print("\nSe ha escogido a: " + picked.getName());
-
-    }
+    
 
     /**
      * Get the value of saga2

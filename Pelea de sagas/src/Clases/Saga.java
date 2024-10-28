@@ -25,6 +25,27 @@ public class Saga {
     private JTextArea[] textAreas;
     private JLabel title_lable;
     private Cola[] queuesArray;
+    private Character pickedCharacter;
+
+    /**
+     * Get the value of pickedCharacter
+     *
+     * @return the value of pickedCharacter
+     */
+    public Character getPickedCharacter() {
+        return pickedCharacter;
+    }
+
+    /**
+     * Set the value of pickedCharacter
+     *
+     * @param pickedCharacter new value of pickedCharacter
+     */
+    public void setPickedCharacter(Character pickedCharacter) {
+        this.pickedCharacter = pickedCharacter;
+    }
+
+    
     
      public Saga(String name) {
         this.name = name;
