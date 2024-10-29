@@ -5,6 +5,7 @@
 package Clases;
 
 import java.util.Random;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Character {
     private boolean agility;
     private int priority;
     private int counter;
+    private ImageIcon imgRoute;
 
     public Character(int id, String name) {
         this.id = id;
@@ -29,6 +31,7 @@ public class Character {
         this.agility = determineQuality(0.4);
         this.priority = determinePriority();
         this.counter = 0;
+        this.imgRoute = Global.getIcon(name);
         
     }
    
@@ -93,6 +96,13 @@ public class Character {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * @return the imgRoute
+     */
+    public ImageIcon getImgRoute() {
+        return imgRoute;
     }
     
     

@@ -9,6 +9,7 @@ import Clases.Admin;
 import Clases.Saga;
 import Clases.Character;
 import Clases.Global;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -20,8 +21,8 @@ public class Home extends javax.swing.JFrame {
     
     public static int id;
     Global g = new Global();
-    private Saga starWars = new Saga("star wars");
-    private Saga starTrek = new Saga("star trek");
+    private Saga starWars = new Saga(Global.starwarsName);
+    private Saga starTrek = new Saga(Global.startrekName);
     AI ai = new AI(starWars, starTrek);
     Admin admin = new Admin(ai);
    
@@ -54,8 +55,8 @@ public class Home extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         character1 = new javax.swing.JLabel();
         character2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        starWarsCard = new javax.swing.JLabel();
+        starTrekCard = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -115,13 +116,13 @@ public class Home extends javax.swing.JFrame {
         character2.setText("Id: Nombre");
         jPanel1.add(character2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 560, 250, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards - Copy.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 240, 340));
+        starWarsCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards - Copy.png"))); // NOI18N
+        starWarsCard.setText("jLabel3");
+        jPanel1.add(starWarsCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 240, 340));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, 250, 340));
+        starTrekCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards.png"))); // NOI18N
+        starTrekCard.setText("jLabel2");
+        jPanel1.add(starTrekCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, 250, 340));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(241, 193, 0));
@@ -259,12 +260,15 @@ public class Home extends javax.swing.JFrame {
         
         JTextArea[] labels1 = new JTextArea[]{ColaH_s1, ColaM_s1, ColaL_s1, ColaR_s1};
         JTextArea[] labels2 = new JTextArea[]{ColaH_s2, ColaM_s2, ColaL_s2, ColaR_s2};
+        JLabel[] cards = new JLabel[]{starWarsCard, starTrekCard};
         
         starWars.setTextAreas(labels1);
         starTrek.setTextAreas(labels2);
         
         starWars.setTitle_lable(character1);
         starTrek.setTitle_lable(character2);
+        
+        admin.setCards(cards);
         
         for (int i = 0; i<20; i++){
             
@@ -342,13 +346,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel starTrekCard;
+    private javax.swing.JLabel starWarsCard;
     // End of variables declaration//GEN-END:variables
 }

@@ -203,6 +203,13 @@ public class Saga {
     public void setCharacter_list(String[] character_list) {
         this.character_list = character_list;
     }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
     
     
 }
