@@ -21,11 +21,13 @@ public class Saga {
     private Cola<Character> highPriorityQueue;
     private Cola<Character> mediumPriorityQueue;
     private Cola<Character> lowPriorityQueue;
+    private Cola<Character> backupQueue;
     private String[] character_list;
     private JTextArea[] textAreas;
     private JLabel title_lable;
     private Cola[] queuesArray;
     private Character pickedCharacter;
+    private JTextArea stats;
 
     /**
      * Get the value of pickedCharacter
@@ -52,10 +54,12 @@ public class Saga {
         this.highPriorityQueue = new Cola();
         this.mediumPriorityQueue = new Cola();
         this.lowPriorityQueue = new Cola();
-        queuesArray = new Cola[3];
+        this.backupQueue = new Cola();
+        queuesArray = new Cola[4];
         queuesArray[0] = highPriorityQueue;
         queuesArray[1] = mediumPriorityQueue;
         queuesArray[2] = lowPriorityQueue;
+        queuesArray[3] = backupQueue;
     }
      
     public void updateCharactersPriorities(){
@@ -98,6 +102,7 @@ public class Saga {
         updateTextArea(0);
         updateTextArea(1);
         updateTextArea(2);
+        updateTextArea(3);
     }
     
     public void updateTextArea(int index){
@@ -158,10 +163,6 @@ public class Saga {
         this.textAreas = textAreas;
     }
 
-    
-    
-   
-
     public Cola<Character> getHighPriorityQueue() {
         return highPriorityQueue;
     }
@@ -209,6 +210,34 @@ public class Saga {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * @return the backupQueue
+     */
+    public Cola<Character> getBackupQueue() {
+        return backupQueue;
+    }
+
+    /**
+     * @param backupQueue the backupQueue to set
+     */
+    public void setBackupQueue(Cola<Character> backupQueue) {
+        this.backupQueue = backupQueue;
+    }
+
+    /**
+     * @return the stats
+     */
+    public JTextArea getStats() {
+        return stats;
+    }
+
+    /**
+     * @param stats the stats to set
+     */
+    public void setStats(JTextArea stats) {
+        this.stats = stats;
     }
     
     

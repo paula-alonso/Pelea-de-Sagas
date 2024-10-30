@@ -15,23 +15,29 @@ public class Character {
     private int id;
     private String name;
     private boolean skill;
-    private boolean healthPoints;
+    private boolean health;
     private boolean strength;
     private boolean agility;
     private int priority;
     private int counter;
     private ImageIcon imgRoute;
+    private int healthPoints;
+    private int strengthPoints;
+    private int agilityPoints;
 
     public Character(int id, String name) {
         this.id = id;
         this.name = name;
         this.skill = determineQuality(0.6); // 60% chance of being high quality
-        this.healthPoints = determineQuality(0.7);
+        this.health = determineQuality(0.7);
         this.strength = determineQuality(0.5);
         this.agility = determineQuality(0.4);
         this.priority = determinePriority();
         this.counter = 0;
         this.imgRoute = Global.getIcon(name);
+        this.healthPoints = assignPoints(health);
+        this.strengthPoints = assignPoints(strength);
+        this.agilityPoints = assignPoints(agility);
         
     }
    
@@ -63,7 +69,7 @@ public class Character {
     private int determinePriority(){
         int qualityCount = 0;
         if(skill) qualityCount++;
-        if(healthPoints) qualityCount++;
+        if(health) qualityCount++;
         if(strength) qualityCount++;
         if(agility) qualityCount++;
         
@@ -75,6 +81,24 @@ public class Character {
         } else {
             return 3;
         }
+    }
+    
+    private int assignPoints(boolean stat) {
+        
+        int points;
+        
+        if (stat) {
+            points = (int) (Math.random() * 50) + 1;
+        } else {
+            points = (int) (Math.random() * 50) + 51;
+        }
+        
+        return points;
+    }
+    
+    public String printStats() {
+        String content = "health: " + this.healthPoints + "\nstrength: " + this.strengthPoints + "\nagility: " + this.agilityPoints;
+        return content;
     }
 
     /**
@@ -103,6 +127,34 @@ public class Character {
      */
     public ImageIcon getImgRoute() {
         return imgRoute;
+    }
+
+    /**
+     * @return the healthPoints
+     */
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    /**
+     * @return the strengthPoints
+     */
+    public int getStrengthPoints() {
+        return strengthPoints;
+    }
+
+    /**
+     * @return the agilityPoints
+     */
+    public int getAgilityPoints() {
+        return agilityPoints;
+    }
+
+    /**
+     * @param healthPoints the healthPoints to set
+     */
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
     
     

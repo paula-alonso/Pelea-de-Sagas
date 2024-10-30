@@ -26,13 +26,16 @@ public class AI extends Thread {
     private Character pickedCharacter1;
     private Character pickedCharacter2;
     private int waitingTime;
+    private int speed;
+    private Character winner;
     
     public AI(Saga saga1, Saga saga2) {
         this.counter = 0;
         this.ready = false;
-        waitingTime = 3000;
+        waitingTime = 5000;
         this.saga1 = saga1;
         this.saga2 = saga2;
+        this.speed = 1;
 
     }
     
@@ -44,6 +47,7 @@ public class AI extends Thread {
             try {
                 
                 status = "Deciding...";
+                Home.status.setText(status);
                 
                 counter++;
                 sleep(waitingTime);
@@ -51,13 +55,18 @@ public class AI extends Thread {
                 double chances = Math.random();
                 if (chances <= 0.4) {
                     
+                     status = "Winner!";
+                     //Home.status.setText(status);
+                    
                 } else if (chances > 0.4 && chances <= 0.67) {
                     
                     status = "Tie!";
+                    Home.status.setText(status);
                     
                 } else {
                     
                     status = "Cancelled!";
+                    Home.status.setText(status);
                     
                 }
              
@@ -77,6 +86,40 @@ public class AI extends Thread {
         }
         return ready;
     }
+    
+    public Character determineWinner(Character character1, Character character2) {
+        // Aplicar habilidades especiales
+        //character1.aplicarHabilidades(character2);
+        //character2.aplicarHabilidades(character1);
+
+        // Calcular daño
+        int daño1 = Math.max(0, character1.getStrengthPoints() - character2.getAgilityPoints());
+        int daño2 = Math.max(0, character2.getStrengthPoints() - character1.getAgilityPoints());
+
+        // Aplicar daño
+        character1.setHealthPoints(character1.getHealthPoints() - daño2); 
+        character2.setHealthPoints(character2.getHealthPoints() - daño1);
+
+        // Determinar ganador
+        if (character1.getHealthPoints() > character2.getHealthPoints()) {
+            return character1;
+        } else if (character2.getHealthPoints() > character1.getHealthPoints()) {
+            return character2;
+        } else {
+            // Desempate basado en quién infligió más daño
+            if (daño1 >= daño2) { //Cambiar despues
+                return character1;
+            } else if (daño2 > daño1) {
+                return character2;
+            } else {
+                return null; // Empate
+            }
+        }
+
+        
+    
+    }
+    
 
     /**
      * Get the value of waitingTime
@@ -223,6 +266,30 @@ public class AI extends Thread {
     }
 
     /**
-     *
+     * @return the speed
      */
+    public int getSpeed() {
+        return speed;
+    }
+
+    /**
+     * @param speed the speed to set
+     */
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    /**
+     * @return the winner
+     */
+    public Character getWinner() {
+        return winner;
+    }
+
+    /**
+     * @param winner the winner to set
+     */
+    public void setWinner(Character winner) {
+        this.winner = winner;
+    }
 }

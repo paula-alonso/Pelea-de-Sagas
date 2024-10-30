@@ -4,13 +4,22 @@
  */
 package Clases;
 
+import EDD.Cola;
+import Interfaces.Home;
 import javax.swing.ImageIcon;
+import javax.swing.JTextArea;
 
 /**
  *
  * @author alons
  */
 public class Global {
+    private Cola<Character> winnersQueue;
+
+    public Global() {
+        this.winnersQueue = new Cola();
+    }
+    
 
     public static String[] star_wars_characters_names = {
         "Emperador", "Mace Windu", "Grand Moff Tarkin", "Chewbacca", "Admiral Ackbar",
@@ -33,4 +42,23 @@ public class Global {
     
     public static String starwarsName = "star wars";
     public static String startrekName = "star trek";
+    
+    public void updateTextArea(){
+        Home.winners.setText(getWinnersQueue().imprimir());
+    }
+
+    /**
+     * @return the winnersQueue
+     */
+    public Cola<Character> getWinnersQueue() {
+        return winnersQueue;
+    }
+
+    /**
+     * @param winnersQueue the winnersQueue to set
+     */
+    public void setWinnersQueue(Cola<Character> winnersQueue) {
+        this.winnersQueue = winnersQueue;
+    }
+    
 }
