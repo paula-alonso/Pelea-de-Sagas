@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author alons
@@ -20,6 +22,15 @@ public class Global {
         "Spock","Garak","Kai Winn","Data","EMH",
         "James T. Kirk","Jean-Luc Picard","Phlox","Benjamin Sisko","Kira",
         "T'Pol","Weyoun","Tuvok","Seven of Nine","Geordi La Forge",
-        "Q","Kira Nerys","Leonard \"Bones\" McCoy","Miles O'Brien","Odo"
+        "Q","Kira Nerys","Leonard-Bones-McCoy","Miles O'Brien","Odo"
     };
+
+    public static ImageIcon getIcon(String name) {
+        String path = "src/Assets/";
+        ImageIcon icon = new ImageIcon(path+name+".png");
+        return icon;
+    }
+    
+    public static String starwarsName = "star wars";
+    public static String startrekName = "star trek";
 }

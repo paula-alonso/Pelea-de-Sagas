@@ -17,12 +17,14 @@ import Interfaces.Home;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 
 public class Admin extends Thread {
 
     private AI ai;
     private Saga saga1;
     private Saga saga2;
+    private JLabel[] cards;
 
     public Admin(AI ai) {
         this.ai = ai;
@@ -77,7 +79,15 @@ public class Admin extends Thread {
             
             picker(saga.getLowPriorityQueue(), saga);
         }
+        updateCards(saga);
+    }
 
+    public void updateCards(Saga saga) {
+        int index = 0;
+        if (saga.getName().equals(Global.startrekName)) {
+            index = 1;
+        }
+        cards[index].setIcon(saga.getPickedCharacter().getImgRoute());
     }
     
     private void picker(Cola queue, Saga saga) {
@@ -156,5 +166,12 @@ public class Admin extends Thread {
         this.saga1 = saga1;
     }
 
+
+    /**
+     * @param cards the cards to set
+     */
+    public void setCards(JLabel[] cards) {
+        this.cards = cards;
+    }
 
 }
