@@ -35,6 +35,48 @@ public class AI extends Thread {
         this.saga2 = saga2;
 
     }
+    
+    @Override
+    public void run() {
+
+        //while (true) {
+
+            try {
+                
+                status = "Deciding...";
+                
+                counter++;
+                sleep(waitingTime);
+                
+                double chances = Math.random();
+                if (chances <= 0.4) {
+                    
+                } else if (chances > 0.4 && chances <= 0.67) {
+                    
+                    status = "Tie!";
+                    
+                } else {
+                    
+                    status = "Cancelled!";
+                    
+                }
+             
+            } catch (InterruptedException ex) {
+                Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        //}
+
+    }
+
+    boolean ready() {
+        if (counter == 2) {
+            ready = true;
+            counter = 0;
+        } else {
+            ready = false;
+        }
+        return ready;
+    }
 
     /**
      * Get the value of waitingTime
@@ -53,9 +95,7 @@ public class AI extends Thread {
     public void setWaitingTime(int waitingTime) {
         this.waitingTime = waitingTime;
     }
-
     
-
     /**
      * Get the value of pickedCharacter2
      *
@@ -91,34 +131,6 @@ public class AI extends Thread {
     public void setPickedCharacter1(Character pickedCharacter1) {
         this.pickedCharacter1 = pickedCharacter1;
     }
-
-    @Override
-    public void run() {
-
-        //while (true) {
-
-            try {
-                counter++;
-                sleep(waitingTime);
-             
-            } catch (InterruptedException ex) {
-                Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        //}
-
-    }
-
-    boolean ready() {
-        if (counter == 2) {
-            ready = true;
-            counter = 0;
-        } else {
-            ready = false;
-        }
-        return ready;
-    }
-
-    
 
     /**
      * Get the value of saga2

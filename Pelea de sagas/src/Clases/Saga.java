@@ -18,7 +18,7 @@ import Clases.Character;
  */
 public class Saga {
     private String name;
-    private Cola<Character> hightPriorityQueue;
+    private Cola<Character> highPriorityQueue;
     private Cola<Character> mediumPriorityQueue;
     private Cola<Character> lowPriorityQueue;
     private String[] character_list;
@@ -49,11 +49,11 @@ public class Saga {
     
      public Saga(String name) {
         this.name = name;
-        this.hightPriorityQueue = new Cola();
+        this.highPriorityQueue = new Cola();
         this.mediumPriorityQueue = new Cola();
         this.lowPriorityQueue = new Cola();
         queuesArray = new Cola[3];
-        queuesArray[0] = hightPriorityQueue;
+        queuesArray[0] = highPriorityQueue;
         queuesArray[1] = mediumPriorityQueue;
         queuesArray[2] = lowPriorityQueue;
     }
@@ -67,7 +67,7 @@ public class Saga {
                 if (character.getCounter() == 8){
                     //Prioridad 2 --> Prioridad 1
                     if (i == 1){ 
-                        hightPriorityQueue.Encolar(character);
+                        highPriorityQueue.Encolar(character);
                         mediumPriorityQueue.delete(aux);     
                     } else { // Prioridad 3 ---> Prioridad 2
                         mediumPriorityQueue.Encolar(character);
@@ -162,12 +162,12 @@ public class Saga {
     
    
 
-    public Cola<Character> getHightPriorityQueue() {
-        return hightPriorityQueue;
+    public Cola<Character> getHighPriorityQueue() {
+        return highPriorityQueue;
     }
 
-    public void setHightPriorityQueue(Cola<Character> hightPriorityQueue) {
-        this.hightPriorityQueue = hightPriorityQueue;
+    public void setHighPriorityQueue(Cola<Character> highPriorityQueue) {
+        this.highPriorityQueue = highPriorityQueue;
     }
 
     public Cola<Character> getMediumPriorityQueue() {

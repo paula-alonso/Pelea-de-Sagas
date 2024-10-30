@@ -12,6 +12,7 @@ package Clases;
 import EDD.Nodo;
 import Clases.Global;
 import Clases.Saga;
+import EDD.Cola;
 import Interfaces.Home;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
@@ -29,7 +30,97 @@ public class Admin extends Thread {
         this.saga2 = ai.getSaga2();
     }
 
+
+    @Override
+    public void run() {
+
+        while (true) {
+           
+            checkEmpty();
+            
+            pickCharacter(saga1);
+            pickCharacter(saga2);
+
+            if (ai.ready()) {
+                double chances = Math.random();
+                if (chances <= 0.8) {
+
+                    int random = (int) (Math.random() * 20);
+                    saga1.addCharacter(random);
+                    random = (int) (Math.random() * 20);
+                    saga2.addCharacter(random);
+
+                }
+            }
+            
+            ai.run();
+            updateQueues();
+        }
+    }
+    
+    public void updateQueues(){
+        saga1.updateCharactersPriorities();
+        saga2.updateCharactersPriorities();
+    }
+    
+    public void pickCharacter(Saga saga) {
+
+        if (!saga.getHighPriorityQueue().isEmpty()) {
+            
+            picker(saga.getHighPriorityQueue(), saga);
+             
+        } else if (!saga.getMediumPriorityQueue().isEmpty()) {
+            
+            picker(saga.getMediumPriorityQueue(), saga);
+             
+        } else {
+            
+            picker(saga.getLowPriorityQueue(), saga);
+        }
+
+    }
+    
+    private void picker(Cola queue, Saga saga) {
+        
+        Character picked =  (Character) queue.getFirst().getData();
+        saga.setPickedCharacter(picked);
+        queue.Desencolar();
+        saga.getTextAreas()[0].setText(queue.imprimir());
+        saga.getTitle_lable().setText(picked.getName());
+        System.out.print("\nSe ha escogido a: " + picked.getName());
+        
+    }
+    
+    private void checkEmpty() {
+        if (saga1.getHighPriorityQueue().isEmpty() && saga1.getMediumPriorityQueue().isEmpty() && saga1.getLowPriorityQueue().isEmpty()) {
+            int random = (int) (Math.random() * 20);
+            saga1.addCharacter(random);
+        }
+        if (saga2.getHighPriorityQueue().isEmpty() && saga2.getMediumPriorityQueue().isEmpty() && saga2.getLowPriorityQueue().isEmpty()) {
+            int random = (int) (Math.random() * 20);
+            saga2.addCharacter(random);
+        }
+    }
+    
+
     /**
+     * Get the value of ai
+     *
+     * @return the value of ai
+     */
+    public AI getAi() {
+        return ai;
+    }
+
+    /**
+     * Set the value of ai
+     *
+     * @param ai new value of ai
+     */
+    public void setAi(AI ai) {
+        this.ai = ai;
+    }
+        /**
      * Get the value of saga2
      *
      * @return the value of saga2
@@ -65,90 +156,5 @@ public class Admin extends Thread {
         this.saga1 = saga1;
     }
 
-    @Override
-    public void run() {
-
-        while (true) {
-           
-            
-            pickCharacter(saga1);
-            pickCharacter(saga2);
-
-            if (ai.ready()) {
-                double chances = Math.random();
-                if (chances <= 0.8) {
-
-                    int random = (int) (Math.random() * 20);
-                    saga1.addCharacter(random);
-                    random = (int) (Math.random() * 20);
-                    saga2.addCharacter(random);
-
-                }
-            }
-            
-            ai.run();
-            updateQueues();
-        }
-    }
-    
-    public void updateQueues(){
-        saga1.updateCharactersPriorities();
-        saga2.updateCharactersPriorities();
-    }
-    
-    public void pickCharacter(Saga saga) {
-
-        if (!saga.getHightPriorityQueue().isEmpty()) {
-            
-            Character picked = (Character) saga.getHightPriorityQueue().getFirst().getData();
-            saga.setPickedCharacter(picked);
-            
-            saga.getHightPriorityQueue().Desencolar();
-            saga.getTextAreas()[0].setText(saga.getHightPriorityQueue().imprimir());
-            saga.getTitle_lable().setText(picked.getName());
-             System.out.print("\nSe ha escogido a: " + picked.getName());
-             
-        } else if (!saga.getMediumPriorityQueue().isEmpty()) {
-            
-            Character picked = (Character) saga.getMediumPriorityQueue().getFirst().getData();
-            saga.setPickedCharacter(picked);
-            
-            saga.getMediumPriorityQueue().Desencolar();
-            saga.getTextAreas()[1].setText(saga.getMediumPriorityQueue().imprimir());
-            saga.getTitle_lable().setText(picked.getName());
-             System.out.print("\nSe ha escogido a: " + picked.getName());
-             
-        } else {
-            
-            Character picked = (Character) saga.getLowPriorityQueue().getFirst().getData();
-            saga.setPickedCharacter(picked);
-            
-            saga.getLowPriorityQueue().Desencolar();
-            saga.getTextAreas()[2].setText(saga.getLowPriorityQueue().imprimir());
-            saga.getTitle_lable().setText(picked.getName());
-             System.out.print("\nSe ha escogido a: " + picked.getName());
-        }
-        
-       
-
-    }
-
-    /**
-     * Get the value of ai
-     *
-     * @return the value of ai
-     */
-    public AI getAi() {
-        return ai;
-    }
-
-    /**
-     * Set the value of ai
-     *
-     * @param ai new value of ai
-     */
-    public void setAi(AI ai) {
-        this.ai = ai;
-    }
 
 }
