@@ -280,7 +280,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 640, -1, -1));
 
         sliderTime.setBackground(new java.awt.Color(255, 255, 255));
-        sliderTime.setFont(new java.awt.Font("Phosphate", 1, 13)); // NOI18N
+        sliderTime.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         sliderTime.setForeground(new java.awt.Color(255, 255, 255));
         sliderTime.setMajorTickSpacing(1);
         sliderTime.setMaximum(20);
