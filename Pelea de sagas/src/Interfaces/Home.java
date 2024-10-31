@@ -334,6 +334,7 @@ public class Home extends javax.swing.JFrame {
         
         
         admin.start();
+        ai.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

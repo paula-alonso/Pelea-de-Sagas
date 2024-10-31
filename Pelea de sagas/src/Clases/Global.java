@@ -6,6 +6,7 @@ package Clases;
 
 import EDD.Cola;
 import Interfaces.Home;
+import java.util.concurrent.Semaphore;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
@@ -15,6 +16,8 @@ import javax.swing.JTextArea;
  */
 public class Global {
     private Cola<Character> winnersQueue;
+    private Semaphore s1 = new Semaphore(0); // semaforo de sincronizacion que se inicializa en 0
+    private Semaphore s2 = new Semaphore(0); // semaforo de sincronizacion que se inicializa en 0
 
     public Global() {
         this.winnersQueue = new Cola();
@@ -59,6 +62,20 @@ public class Global {
      */
     public void setWinnersQueue(Cola<Character> winnersQueue) {
         this.winnersQueue = winnersQueue;
+    }
+
+    /**
+     * @return the s1
+     */
+    public Semaphore getS1() {
+        return s1;
+    }
+
+    /**
+     * @return the s2
+     */
+    public Semaphore getS2() {
+        return s2;
     }
     
 }

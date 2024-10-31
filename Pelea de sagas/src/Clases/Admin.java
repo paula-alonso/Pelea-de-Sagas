@@ -24,13 +24,14 @@ public class Admin extends Thread {
     private AI ai;
     private Saga saga1;
     private Saga saga2;
+    private int cycle_counter;
     private JLabel[] cards;
-    
 
     public Admin(AI ai) {
         this.ai = ai;
         this.saga1 = ai.getSaga1();
         this.saga2 = ai.getSaga2();
+        this.cycle_counter = 0;
     }
 
     @Override
@@ -41,11 +42,21 @@ public class Admin extends Thread {
             try {
 
                 checkEmpty();
+                pickCharacter(saga1);
+                pickCharacter(saga2);
+                Home.g.getS1().release();
 
-                if (ai.ready()) {
+                Home.g.getS2().acquire();
+                cycle_counter++;
+                handleWinner();
+                handleTie();
+                handleCancelled();
+
+                updateQueues();
+                if (cycle_counter == 2) {
+                    cycle_counter = 0;
                     double chances = Math.random();
                     if (chances <= 0.8) {
-
                         int random = (int) (Math.random() * 20);
                         saga1.addCharacter(random);
                         random = (int) (Math.random() * 20);
@@ -53,18 +64,7 @@ public class Admin extends Thread {
 
                     }
                 }
-
-                pickCharacter(saga1);
-                pickCharacter(saga2);
-
-                ai.run();
-
-                handleWinner();
-                handleTie();
-                handleCancelled();
-
-                updateQueues();
-                sleep(3000 * (1 / ai.getSpeed()));
+                sleep(5000);
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
@@ -155,8 +155,7 @@ public class Admin extends Thread {
             Home.g.getWinnersQueue().Encolar(winner);
             Home.g.updateTextArea();
             ai.setWinner(winner);
-            
-            
+
         }
     }
 

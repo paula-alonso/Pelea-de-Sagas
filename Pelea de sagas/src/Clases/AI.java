@@ -42,14 +42,13 @@ public class AI extends Thread {
     @Override
     public void run() {
 
-        //while (true) {
+        while (true) {
 
             try {
                 
+                Home.g.getS1().acquire();
                 status = "Deciding...";
                 Home.status.setText(status);
-                
-                counter++;
                 sleep(waitingTime);
                 
                 double chances = Math.random();
@@ -69,11 +68,12 @@ public class AI extends Thread {
                     Home.status.setText(status);
                     
                 }
+                Home.g.getS2().release();
              
             } catch (InterruptedException ex) {
                 Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
             }
-        //}
+        }
 
     }
 
