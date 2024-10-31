@@ -86,6 +86,8 @@ public class Home extends javax.swing.JFrame {
         ColaH_s1 = new javax.swing.JTextArea();
         stats1 = new javax.swing.JTextArea();
         stats2 = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        sliderTime = new javax.swing.JSlider();
         Fondo = new javax.swing.JLabel();
         character1 = new javax.swing.JLabel();
         character2 = new javax.swing.JLabel();
@@ -103,7 +105,7 @@ public class Home extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 700, 200, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 740, 180, 60));
 
         status.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         status.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,8 +168,8 @@ public class Home extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Lista de ganadores:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 640, -1, -1));
+        jLabel6.setText("Velocidad de la IA (en segundos):");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 710, -1, 30));
 
         jwinnersPane.setBackground(new java.awt.Color(0, 0, 0));
         jwinnersPane.setForeground(new java.awt.Color(0, 0, 0));
@@ -272,10 +274,33 @@ public class Home extends javax.swing.JFrame {
         stats2.setBorder(null);
         jPanel1.add(stats2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, 250, 60));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Lista de ganadores:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 640, -1, -1));
+
+        sliderTime.setBackground(new java.awt.Color(255, 255, 255));
+        sliderTime.setFont(new java.awt.Font("Phosphate", 1, 13)); // NOI18N
+        sliderTime.setForeground(new java.awt.Color(255, 255, 255));
+        sliderTime.setMajorTickSpacing(1);
+        sliderTime.setMaximum(20);
+        sliderTime.setMinimum(1);
+        sliderTime.setPaintLabels(true);
+        sliderTime.setPaintTicks(true);
+        sliderTime.setSnapToTicks(true);
+        sliderTime.setValue(10);
+        sliderTime.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sliderTime.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderTimeStateChanged(evt);
+            }
+        });
+        jPanel1.add(sliderTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 740, 770, 70));
+
         Fondo.setForeground(new java.awt.Color(60, 63, 65));
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/background.png"))); // NOI18N
         Fondo.setText("jLabel1");
-        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 790));
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 840));
 
         character1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         character1.setForeground(new java.awt.Color(255, 255, 255));
@@ -300,7 +325,7 @@ public class Home extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 784, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -336,6 +361,11 @@ public class Home extends javax.swing.JFrame {
         admin.start();
         ai.start();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void sliderTimeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderTimeStateChanged
+        // TODO add your handling code here:
+        ai.setWaitingTime(sliderTime.getValue() * 1000);
+    }//GEN-LAST:event_sliderTimeStateChanged
 
     /**
      * @param args the command line arguments
@@ -401,10 +431,12 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jwinnersPane;
+    private javax.swing.JSlider sliderTime;
     private javax.swing.JLabel starTrekCard;
     private javax.swing.JLabel starWarsCard;
     private javax.swing.JTextArea stats1;

@@ -28,14 +28,16 @@ public class AI extends Thread {
     private int waitingTime;
     private int speed;
     private Character winner;
+    private double speedFactor;
     
     public AI(Saga saga1, Saga saga2) {
         this.counter = 0;
         this.ready = false;
-        waitingTime = 5000;
+        waitingTime = 10000;
         this.saga1 = saga1;
         this.saga2 = saga2;
         this.speed = 1;
+        this.speedFactor = 1;
 
     }
     
@@ -49,7 +51,7 @@ public class AI extends Thread {
                 Home.g.getS1().acquire();
                 status = "Deciding...";
                 Home.status.setText(status);
-                sleep(waitingTime);
+                sleep((int) (waitingTime * speedFactor));
                 
                 double chances = Math.random();
                 if (chances <= 0.4) {

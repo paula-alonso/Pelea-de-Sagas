@@ -67,13 +67,14 @@ public class Saga {
         if (!backupQueue.isEmpty()) {
             double probability = Math.random();
             Character character = (Character) backupQueue.Desencolar().getData();
-            if (probability <= 0.4){
+            if (probability <= 0.4) {
                 character.setPriority(1);
                 highPriorityQueue.Encolar(character);
             } else {
                 backupQueue.Encolar(character);
             }
         }
+        updateAllTextAreas();
 
     }
 
@@ -94,7 +95,6 @@ public class Saga {
                         mediumPriorityQueue.Encolar(character);
                         lowPriorityQueue.delete(aux);
                     }
-                    updateAllTextAreas();
                 }
                 aux = aux.getpNext();
             }

@@ -51,7 +51,7 @@ public class Admin extends Thread {
                 handleWinner();
                 handleTie();
                 handleCancelled();
-
+                sleep(1500);
                 updateQueues();
                 if (cycle_counter == 2) {
                     cycle_counter = 0;
@@ -64,7 +64,7 @@ public class Admin extends Thread {
 
                     }
                 }
-                sleep(5000);
+                sleep(2000);
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
@@ -74,10 +74,10 @@ public class Admin extends Thread {
     }
 
     public void updateQueues() {
-        saga1.updateBackupQueue();
-        saga2.updateBackupQueue();
         saga1.updateCharactersPriorities();
         saga2.updateCharactersPriorities();
+        saga1.updateBackupQueue();
+        saga2.updateBackupQueue();
     }
 
     public void pickCharacter(Saga saga) {
