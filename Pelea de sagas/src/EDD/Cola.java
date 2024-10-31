@@ -60,6 +60,7 @@ public class Cola<T> {
             First = nuevo;
             First.setpNext(Last);
             Last = nuevo;
+            size++;
         } else {
             Last.setpNext(nuevo);
             Last = nuevo;
@@ -70,17 +71,20 @@ public class Cola<T> {
     /**
      * Metodo desencolar
      */
-    public void Desencolar() {
-
+    public Nodo Desencolar() {
+        Nodo node;
         if (!this.isEmpty()) {
-            if (size == 1) {
+            node = First;
+            if (getSize() == 1) {
                 this.empty();
             } else {
                 First = First.getpNext();
                 size--;
             }
+            return node;
 
         }
+        return null;
     }
 
     public String imprimir() {
@@ -108,5 +112,12 @@ public class Cola<T> {
                 aux.setpNext(nodeToDelete.getpNext());
             }
         }
+    }
+
+    /**
+     * @return the size
+     */
+    public int getSize() {
+        return size;
     }
 }

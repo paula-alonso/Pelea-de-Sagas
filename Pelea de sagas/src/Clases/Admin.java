@@ -74,6 +74,8 @@ public class Admin extends Thread {
     }
 
     public void updateQueues() {
+        saga1.updateBackupQueue();
+        saga2.updateBackupQueue();
         saga1.updateCharactersPriorities();
         saga2.updateCharactersPriorities();
     }
