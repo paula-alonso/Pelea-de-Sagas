@@ -17,6 +17,8 @@ import Interfaces.Home;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Admin extends Thread {
@@ -41,11 +43,23 @@ public class Admin extends Thread {
 
             try {
 
-                checkEmpty();
+                checkEmpty(); 
+                
+                //Simular que esta seleccionando los personajes
+                Home.status.setText("Selecting...");
+                ImageIcon icon = new ImageIcon("src/Assets/cargando.gif");
+                cards[0].setIcon(icon);
+                cards[1].setIcon(icon);
+                sleep(1500);
+                
+                //Personajes seleccionados se colocan en las tarjetas
                 pickCharacter(saga1);
                 pickCharacter(saga2);
+                
+                // Permitir que AI se ejecute
                 Home.g.getS1().release();
-
+                
+                // Esperar a que AI termine
                 Home.g.getS2().acquire();
                 cycle_counter++;
                 handleWinner();

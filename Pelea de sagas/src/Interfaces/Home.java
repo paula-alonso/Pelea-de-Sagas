@@ -115,6 +115,7 @@ public class Home extends javax.swing.JFrame {
 
         starWarsCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards - Copy.png"))); // NOI18N
         starWarsCard.setText("jLabel3");
+        starWarsCard.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(starWarsCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 240, 340));
 
         starTrekCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards.png"))); // NOI18N

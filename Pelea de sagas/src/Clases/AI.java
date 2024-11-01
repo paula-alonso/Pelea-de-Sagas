@@ -47,7 +47,7 @@ public class AI extends Thread {
         while (true) {
 
             try {
-                
+                // Esperar a Admin
                 Home.g.getS1().acquire();
                 status = "Deciding...";
                 Home.status.setText(status);
@@ -70,6 +70,7 @@ public class AI extends Thread {
                     Home.status.setText(status);
                     
                 }
+                // Permitir que Admin continúe
                 Home.g.getS2().release();
              
             } catch (InterruptedException ex) {
