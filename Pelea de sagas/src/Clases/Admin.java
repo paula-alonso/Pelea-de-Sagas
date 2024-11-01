@@ -78,7 +78,7 @@ public class Admin extends Thread {
 
                     }
                 }
-                sleep(1300);
+                sleep(1200);
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);

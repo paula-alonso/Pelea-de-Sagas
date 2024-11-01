@@ -33,7 +33,7 @@ public class AI extends Thread {
     public AI(Saga saga1, Saga saga2) {
         this.counter = 0;
         this.ready = false;
-        waitingTime = 10000;
+        waitingTime = 4000;
         this.saga1 = saga1;
         this.saga2 = saga2;
         this.speed = 1;

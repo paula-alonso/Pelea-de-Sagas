@@ -114,7 +114,6 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 590, -1));
 
         starWarsCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/cards - Copy.png"))); // NOI18N
-        starWarsCard.setText("jLabel3");
         starWarsCard.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(starWarsCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 240, 340));
 
@@ -289,7 +288,7 @@ public class Home extends javax.swing.JFrame {
         sliderTime.setPaintLabels(true);
         sliderTime.setPaintTicks(true);
         sliderTime.setSnapToTicks(true);
-        sliderTime.setValue(10);
+        sliderTime.setValue(4);
         sliderTime.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sliderTime.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
