@@ -193,6 +193,12 @@ public class Character {
     public String getSkillName() {
         return skillName;
     }
+    /**
+     * @param priority the priority to set
+     */
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
     
     
 }

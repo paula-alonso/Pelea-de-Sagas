@@ -17,6 +17,8 @@ import Interfaces.Home;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Admin extends Thread {
@@ -24,13 +26,14 @@ public class Admin extends Thread {
     private AI ai;
     private Saga saga1;
     private Saga saga2;
+    private int cycle_counter;
     private JLabel[] cards;
-    
 
     public Admin(AI ai) {
         this.ai = ai;
         this.saga1 = ai.getSaga1();
         this.saga2 = ai.getSaga2();
+        this.cycle_counter = 0;
     }
 
     @Override
@@ -40,12 +43,34 @@ public class Admin extends Thread {
 
             try {
 
-                checkEmpty();
-
-                if (ai.ready()) {
+                checkEmpty(); 
+                
+                //Simular que esta seleccionando los personajes
+                Home.status.setText("Selecting...");
+                ImageIcon icon = new ImageIcon("src/Assets/cargando.gif");
+                cards[0].setIcon(icon);
+                cards[1].setIcon(icon);
+                sleep(1500);
+                
+                //Personajes seleccionados se colocan en las tarjetas
+                pickCharacter(saga1);
+                pickCharacter(saga2);
+                
+                // Permitir que AI se ejecute
+                Home.g.getS1().release();
+                
+                // Esperar a que AI termine
+                Home.g.getS2().acquire();
+                cycle_counter++;
+                handleWinner();
+                handleTie();
+                handleCancelled();
+                sleep(1500);
+                updateQueues();
+                if (cycle_counter == 2) {
+                    cycle_counter = 0;
                     double chances = Math.random();
                     if (chances <= 0.8) {
-
                         int random = (int) (Math.random() * 20);
                         saga1.addCharacter(random);
                         random = (int) (Math.random() * 20);
@@ -53,18 +78,7 @@ public class Admin extends Thread {
 
                     }
                 }
-
-                pickCharacter(saga1);
-                pickCharacter(saga2);
-
-                ai.run();
-
-                handleWinner();
-                handleTie();
-                handleCancelled();
-
-                updateQueues();
-                sleep(3000 * (1 / ai.getSpeed()));
+                sleep(1200);
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,6 +90,8 @@ public class Admin extends Thread {
     public void updateQueues() {
         saga1.updateCharactersPriorities();
         saga2.updateCharactersPriorities();
+        saga1.updateBackupQueue();
+        saga2.updateBackupQueue();
     }
 
     public void pickCharacter(Saga saga) {
@@ -153,8 +169,7 @@ public class Admin extends Thread {
             Home.g.getWinnersQueue().Encolar(winner);
             Home.g.updateTextArea();
             ai.setWinner(winner);
-            
-            
+
         }
     }
 

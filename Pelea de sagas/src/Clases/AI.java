@@ -28,29 +28,30 @@ public class AI extends Thread {
     private int waitingTime;
     private int speed;
     private Character winner;
+    private double speedFactor;
     
     public AI(Saga saga1, Saga saga2) {
         this.counter = 0;
         this.ready = false;
-        waitingTime = 3000;
+        waitingTime = 4000;
         this.saga1 = saga1;
         this.saga2 = saga2;
         this.speed = 1;
+        this.speedFactor = 1;
 
     }
     
     @Override
     public void run() {
 
-        //while (true) {
+        while (true) {
 
             try {
-                
+                // Esperar a Admin
+                Home.g.getS1().acquire();
                 status = "Deciding...";
                 Home.status.setText(status);
-                
-                counter++;
-                sleep(waitingTime);
+                sleep((int) (waitingTime * speedFactor));
                 
                 double chances = Math.random();
                 if (chances <= 0.4) {
@@ -69,11 +70,13 @@ public class AI extends Thread {
                     Home.status.setText(status);
                     
                 }
+                // Permitir que Admin continúe
+                Home.g.getS2().release();
              
             } catch (InterruptedException ex) {
                 Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
             }
-        //}
+        }
 
     }
 
