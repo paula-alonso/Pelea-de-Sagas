@@ -110,8 +110,8 @@ public class AI extends Thread {
         int damage2 = Math.max(0, character2.getStrengthPoints() - character1.getAgilityPoints());
 
         // Aplicar daño
-        character1.setHealthPoints(character1.getHealthPoints() - damage1); 
-        character2.setHealthPoints(character2.getHealthPoints() - damage2);
+        character1.setHealthPoints(character1.getHealthPoints() - damage2); 
+        character2.setHealthPoints(character2.getHealthPoints() - damage1);
 
         // Determinar ganador
         if (character1.getHealthPoints() > character2.getHealthPoints()) {

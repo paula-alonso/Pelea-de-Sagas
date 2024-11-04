@@ -50,7 +50,7 @@ public class Admin extends Thread {
                 ImageIcon icon = new ImageIcon("src/Assets/cargando.gif");
                 cards[0].setIcon(icon);
                 cards[1].setIcon(icon);
-                sleep(1500);
+                sleep(1100);
                 
                 //Personajes seleccionados se colocan en las tarjetas
                 pickCharacter(saga1);

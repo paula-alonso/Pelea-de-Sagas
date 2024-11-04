@@ -307,6 +307,7 @@ public class Home extends javax.swing.JFrame {
         sliderTime.setSnapToTicks(true);
         sliderTime.setValue(10);
         sliderTime.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sliderTime.setEnabled(false);
         sliderTime.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderTimeStateChanged(evt);
@@ -377,6 +378,7 @@ public class Home extends javax.swing.JFrame {
         
         admin.start();
         ai.start();
+        sliderTime.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void sliderTimeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderTimeStateChanged
