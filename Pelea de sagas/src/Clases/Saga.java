@@ -28,6 +28,7 @@ public class Saga {
     private Cola[] queuesArray;
     private Character pickedCharacter;
     private JTextArea stats;
+    private String[] specialSkills; 
 
     /**
      * Get the value of pickedCharacter
@@ -238,6 +239,20 @@ public class Saga {
      */
     public void setStats(JTextArea stats) {
         this.stats = stats;
+    }
+
+    /**
+     * @return the specialSkills
+     */
+    public String[] getSpecialSkills() {
+        return specialSkills;
+    }
+
+    /**
+     * @param specialSkills the specialSkills to set
+     */
+    public void setSpecialSkills(String[] specialSkills) {
+        this.specialSkills = specialSkills;
     }
     
     

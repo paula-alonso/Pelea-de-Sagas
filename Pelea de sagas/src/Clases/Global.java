@@ -33,6 +33,8 @@ public class Global {
         "T'Pol","Weyoun","Tuvok","Seven of Nine","Geordi La Forge",
         "Q","Kira Nerys","Leonard-Bones-McCoy","Miles O'Brien","Odo"
     };
+    
+    public static String[] special_skills = {"Feel The Force", "Energy Shield", "Healing Ray", "Precision Shot", "Cloaking Technology", "Quick Engineering"};
 
     public static ImageIcon getIcon(String name) {
         String path = "src/Assets/";

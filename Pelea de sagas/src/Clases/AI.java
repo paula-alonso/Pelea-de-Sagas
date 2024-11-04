@@ -32,7 +32,7 @@ public class AI extends Thread {
     public AI(Saga saga1, Saga saga2) {
         this.counter = 0;
         this.ready = false;
-        waitingTime = 5000;
+        waitingTime = 3000;
         this.saga1 = saga1;
         this.saga2 = saga2;
         this.speed = 1;
@@ -87,18 +87,28 @@ public class AI extends Thread {
         return ready;
     }
     
+    private void applySkill(Character character) {
+        if (null != character.getSkillName()) switch (character.getSkillName()) {
+            case "Feel The Force", "Precision Shot" -> character.setStrengthPoints(character.getStrengthPoints()*2);
+            case "Energy Shield", "Cloaking Technology" -> character.setAgilityPoints(character.getAgilityPoints()*2);
+            case "Healing Ray", "Quick Engineering" -> character.setHealthPoints(character.getHealthPoints()*2);
+            default -> {
+            }
+        }
+    }
+    
     public Character determineWinner(Character character1, Character character2) {
         // Aplicar habilidades especiales
-        //character1.aplicarHabilidades(character2);
-        //character2.aplicarHabilidades(character1);
+        applySkill(character1);
+        applySkill(character2);
 
         // Calcular daño
-        int daño1 = Math.max(0, character1.getStrengthPoints() - character2.getAgilityPoints());
-        int daño2 = Math.max(0, character2.getStrengthPoints() - character1.getAgilityPoints());
+        int damage1 = Math.max(0, character1.getStrengthPoints() - character2.getAgilityPoints());
+        int damage2 = Math.max(0, character2.getStrengthPoints() - character1.getAgilityPoints());
 
         // Aplicar daño
-        character1.setHealthPoints(character1.getHealthPoints() - daño2); 
-        character2.setHealthPoints(character2.getHealthPoints() - daño1);
+        character1.setHealthPoints(character1.getHealthPoints() - damage2); 
+        character2.setHealthPoints(character2.getHealthPoints() - damage1);
 
         // Determinar ganador
         if (character1.getHealthPoints() > character2.getHealthPoints()) {
@@ -107,12 +117,20 @@ public class AI extends Thread {
             return character2;
         } else {
             // Desempate basado en quién infligió más daño
-            if (daño1 >= daño2) { //Cambiar despues
+            if (damage1 > damage2) { 
                 return character1;
-            } else if (daño2 > daño1) {
+            } else if (damage2 > damage1) {
                 return character2;
-            } else {
-                return null; // Empate
+            } else { // Desempate aleatorio
+                double random = Math.random();
+                while (random == 0.5) {
+                    random = Math.random();
+                }
+                if (random>0.5) {
+                    return character1;
+                } else {
+                    return character2;
+                }
             }
         }
 

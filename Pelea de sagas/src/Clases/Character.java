@@ -4,6 +4,7 @@
  */
 package Clases;
 
+import static java.lang.Math.random;
 import java.util.Random;
 import javax.swing.ImageIcon;
 
@@ -21,6 +22,7 @@ public class Character {
     private int priority;
     private int counter;
     private ImageIcon imgRoute;
+    private String skillName;
     private int healthPoints;
     private int strengthPoints;
     private int agilityPoints;
@@ -35,6 +37,7 @@ public class Character {
         this.priority = determinePriority();
         this.counter = 0;
         this.imgRoute = Global.getIcon(name);
+        this.skillName = assignSkill(skill);
         this.healthPoints = assignPoints(health);
         this.strengthPoints = assignPoints(strength);
         this.agilityPoints = assignPoints(agility);
@@ -97,9 +100,22 @@ public class Character {
     }
     
     public String printStats() {
-        String content = "health: " + this.healthPoints + "\nstrength: " + this.strengthPoints + "\nagility: " + this.agilityPoints;
+        String content = "skill: " + this.getSkillName() + "\nhealth: " + this.healthPoints + "\nstrength: " + this.strengthPoints + "\nagility: " + this.agilityPoints;
         return content;
     }
+    
+    private String assignSkill(boolean skill) {
+        String skillAssigned = "None";
+        
+        if (skill) {
+            int i = (int) (Math.random() * 3); 
+            skillAssigned = Global.special_skills[i];
+        }
+        
+        return skillAssigned;
+    }
+    
+    
 
     /**
      * @return the id
@@ -155,6 +171,27 @@ public class Character {
      */
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
+    }
+
+    /**
+     * @param strengthPoints the strengthPoints to set
+     */
+    public void setStrengthPoints(int strengthPoints) {
+        this.strengthPoints = strengthPoints;
+    }
+
+    /**
+     * @param agilityPoints the agilityPoints to set
+     */
+    public void setAgilityPoints(int agilityPoints) {
+        this.agilityPoints = agilityPoints;
+    }
+
+    /**
+     * @return the skillName
+     */
+    public String getSkillName() {
+        return skillName;
     }
     
     

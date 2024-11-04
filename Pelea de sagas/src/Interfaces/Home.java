@@ -39,6 +39,7 @@ public class Home extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         starWars.setCharacter_list(g.star_wars_characters_names);
         starTrek.setCharacter_list(g.star_trek_characters_names);
+       
         
     }
 
@@ -152,7 +153,7 @@ public class Home extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(241, 193, 0));
         jLabel9.setText("Cola 2");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(241, 193, 0));
@@ -206,7 +207,7 @@ public class Home extends javax.swing.JFrame {
         ColaH_s2.setRows(5);
         ColaH_s22.setViewportView(ColaH_s2);
 
-        jPanel1.add(ColaH_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, 190, 80));
+        jPanel1.add(ColaH_s22, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, 190, 80));
 
         ColaM_s2.setEditable(false);
         ColaM_s2.setBackground(new java.awt.Color(0, 0, 0));
@@ -261,7 +262,7 @@ public class Home extends javax.swing.JFrame {
         stats1.setText("skill:\nhealth:\nstrength:\nagility:");
         stats1.setBorder(null);
         stats1.setCaretColor(new java.awt.Color(0, 0, 0));
-        jPanel1.add(stats1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 230, 60));
+        jPanel1.add(stats1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 230, 80));
 
         stats2.setBackground(new java.awt.Color(0, 0, 0));
         stats2.setColumns(20);
@@ -270,7 +271,7 @@ public class Home extends javax.swing.JFrame {
         stats2.setRows(5);
         stats2.setText("skill:\nhealth:\nstrength:\nagility:");
         stats2.setBorder(null);
-        jPanel1.add(stats2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, 250, 60));
+        jPanel1.add(stats2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, 250, 80));
 
         Fondo.setForeground(new java.awt.Color(60, 63, 65));
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/background.png"))); // NOI18N
