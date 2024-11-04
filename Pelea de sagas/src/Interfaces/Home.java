@@ -256,6 +256,7 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.add(ColaH_s11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 190, 80));
 
+        stats1.setEditable(false);
         stats1.setBackground(new java.awt.Color(0, 0, 0));
         stats1.setColumns(20);
         stats1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -266,6 +267,7 @@ public class Home extends javax.swing.JFrame {
         stats1.setCaretColor(new java.awt.Color(0, 0, 0));
         jPanel1.add(stats1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 230, 80));
 
+        stats2.setEditable(false);
         stats2.setBackground(new java.awt.Color(0, 0, 0));
         stats2.setColumns(20);
         stats2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
