@@ -18,9 +18,23 @@ public class Global {
     private Cola<Character> winnersQueue;
     private Semaphore s1 = new Semaphore(0); // semaforo de sincronizacion que se inicializa en 0
     private Semaphore s2 = new Semaphore(0); // semaforo de sincronizacion que se inicializa en 0
+    private int winsStarWars;
+    private int winsStarTrek;
 
     public Global() {
         this.winnersQueue = new Cola();
+        this.winsStarWars = 0;
+        this.winsStarTrek = 0;
+    }
+    
+    public void addWinnerSW () {
+        this.winsStarWars += 1;
+        Home.winsSW.setText("" + this.winsStarWars);
+    }
+    
+    public void addWinnerST () {
+        this.winsStarTrek += 1;
+        Home.winsST.setText("" + this.winsStarTrek);
     }
     
 

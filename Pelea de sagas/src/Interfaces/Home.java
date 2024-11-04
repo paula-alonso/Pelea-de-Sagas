@@ -54,6 +54,8 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        winsST = new javax.swing.JLabel();
+        winsSW = new javax.swing.JLabel();
         status = new javax.swing.JLabel();
         starWarsCard = new javax.swing.JLabel();
         starTrekCard = new javax.swing.JLabel();
@@ -107,6 +109,18 @@ public class Home extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 740, 180, 60));
+
+        winsST.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        winsST.setForeground(new java.awt.Color(255, 255, 255));
+        winsST.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        winsST.setText("0");
+        jPanel1.add(winsST, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 70, 30, -1));
+
+        winsSW.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        winsSW.setForeground(new java.awt.Color(255, 255, 255));
+        winsSW.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        winsSW.setText("0");
+        jPanel1.add(winsSW, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 30, -1));
 
         status.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         status.setForeground(new java.awt.Color(255, 255, 255));
@@ -291,7 +305,7 @@ public class Home extends javax.swing.JFrame {
         sliderTime.setPaintLabels(true);
         sliderTime.setPaintTicks(true);
         sliderTime.setSnapToTicks(true);
-        sliderTime.setValue(4);
+        sliderTime.setValue(10);
         sliderTime.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sliderTime.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -446,5 +460,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea stats2;
     public static javax.swing.JLabel status;
     public static javax.swing.JTextArea winners;
+    public static javax.swing.JLabel winsST;
+    public static javax.swing.JLabel winsSW;
     // End of variables declaration//GEN-END:variables
 }

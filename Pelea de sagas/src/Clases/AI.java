@@ -33,7 +33,7 @@ public class AI extends Thread {
     public AI(Saga saga1, Saga saga2) {
         this.counter = 0;
         this.ready = false;
-        waitingTime = 4000;
+        waitingTime = 10000;
         this.saga1 = saga1;
         this.saga2 = saga2;
         this.speed = 1;
@@ -110,19 +110,23 @@ public class AI extends Thread {
         int damage2 = Math.max(0, character2.getStrengthPoints() - character1.getAgilityPoints());
 
         // Aplicar daño
-        character1.setHealthPoints(character1.getHealthPoints() - damage2); 
-        character2.setHealthPoints(character2.getHealthPoints() - damage1);
+        character1.setHealthPoints(character1.getHealthPoints() - damage1); 
+        character2.setHealthPoints(character2.getHealthPoints() - damage2);
 
         // Determinar ganador
         if (character1.getHealthPoints() > character2.getHealthPoints()) {
+            Home.g.addWinnerSW();
             return character1;
         } else if (character2.getHealthPoints() > character1.getHealthPoints()) {
+            Home.g.addWinnerST();
             return character2;
         } else {
             // Desempate basado en quién infligió más daño
             if (damage1 > damage2) { 
+                Home.g.addWinnerST();
                 return character1;
             } else if (damage2 > damage1) {
+                Home.g.addWinnerST();
                 return character2;
             } else { // Desempate aleatorio
                 double random = Math.random();
@@ -130,8 +134,10 @@ public class AI extends Thread {
                     random = Math.random();
                 }
                 if (random>0.5) {
+                    Home.g.addWinnerSW();
                     return character1;
                 } else {
+                    Home.g.addWinnerST();
                     return character2;
                 }
             }
